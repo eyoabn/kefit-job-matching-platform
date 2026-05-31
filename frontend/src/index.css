@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kefit-primary: #006837;
+  --color-kefit-secondary: #f9d616;
+  --color-kefit-red: #ef3340;
+   
+  --color-sidebar: #006837;
+  --color-surface: #ffffff;
+  --color-background: #f3f4f6;
+  --color-muted: #f8fafc;
+   
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+   
+  --radius-2xl: 1rem;
+  --radius-xl: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-slate-900 antialiased font-sans;
+  }
+}
+
+@layer components {
+  .card-geometric {
+    @apply bg-white rounded-2xl border border-slate-200 shadow-sm transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-kefit-primary text-white px-6 py-2 rounded-lg text-sm font-bold hover:brightness-110 active:scale-95 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-kefit-secondary text-kefit-primary px-6 py-2 rounded-lg text-sm font-bold hover:brightness-110 active:scale-95 transition-all;
+  }
+}
