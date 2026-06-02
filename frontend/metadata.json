@@ -1,0 +1,6 @@
+{
+  "name": "Kefit - Freelance Marketplace",
+  "description": "The leading digital marketplace for hiring talent and finding work in Ethiopia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["auth", "jobs", "bidding", "admin"]
+}
