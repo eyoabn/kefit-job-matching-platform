@@ -12,12 +12,35 @@ from src.middleware.logging_middleware import logging_middleware
 limiter = Limiter(key_func=get_remote_address)
 
 
+import asyncio
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Run migrations and seed data on startup
+    import subprocess
+    import sys
+    from src.seed_demo_data import seed_demo_data
+    
+    print("Running database migrations...")
+    subprocess.run([sys.executable, "-m", "alembic", "upgrade", "head"], check=False)
+    
+    print("Seeding demo data...")
+    try:
+        await seed_demo_data()
+    except Exception as e:
+        print(f"Seed data error (may already exist): {e}")
+        
+    yield
+
+
 app = FastAPI(
     title="Kefit API",
     description="Ethiopian Freelance Marketplace API",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 app.state.limiter = limiter
