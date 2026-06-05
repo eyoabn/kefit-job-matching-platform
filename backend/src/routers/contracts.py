@@ -10,7 +10,7 @@ from src.schemas import ContractResponse
 
 from src.services.contract_service import ContractService
 from src.schemas.contract import ContractCreate
-from src.schemas.review import ReviewCreate
+from src.schemas.review import ReviewCreate, ReviewSubmit
 
 router = APIRouter()
 
